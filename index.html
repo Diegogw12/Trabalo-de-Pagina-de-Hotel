@@ -4,73 +4,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Formulário de Reserva de Hotel</title>
-    <!-- CSS do Bootstrap -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-            margin: 0;
-        }
-        header {
-            background-color: #007bff;
-            color: #fff;
-            padding: 10px 0;
-        }
-        header .logo img {
-            height: 40px;
-        }
-        header .menu ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-        }
-        header .menu ul li {
-            display: inline;
-            margin-left: 20px;
-        }
-        header .menu ul li a {
-            color: #fff;
-            text-decoration: none;
-            padding: 10px 20px;
-            display: inline-block;
-        }
-        header .menu ul li a:hover {
-            background-color: #0056b3;
-            border-radius: 5px;
-        }
-        h2 {
-            color: #007bff;
-            text-align: center;
-            margin-top: 20px;
-        }
-        form {
-            background-color: #ffffff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            max-width: 500px;
-            margin: 20px auto;
-        }
-    </style>
-    <script>
-        function calcularTotalEstimado() {
-            var dataChegada = new Date(document.getElementById("data_chegada").value);
-            var numNoites = parseInt(document.getElementById("num_noites").value);
-            var numHospedes = parseInt(document.getElementById("num_hospedes").value);
-            var precoPorNoite = 90;
-            var totalEstimado = precoPorNoite * numNoites * numHospedes;
-            document.getElementById("total_estimado").value = totalEstimado.toFixed(2);
-        }
-    </script>
+    <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-    <header class="d-flex justify-content-between align-items-center px-3">
+    <header>
         <div class="logo">
-            <img src="Logo/Hoteel.jpg" alt="Logomarca do Hotel" />
+            <img src="logo/Hoteel.jpg" alt="Logomarca do Hotel" />
         </div>
         <nav class="menu">
-            <ul class="d-flex">
+            <ul>
                 <li><a href="#home">Home</a></li>
                 <li><a href="#sobre">Sobre</a></li>
                 <li><a href="#servicos">Serviços</a></li>
@@ -78,58 +20,54 @@
             </ul>
         </nav>
     </header>
-    <div class="container">
-        <h2>Formulário de Reserva de Hotel</h2>
-        <form action="processar_reserva.php" method="POST">
-            <div class="form-group">
-                <label for="nome">Nome:</label>
-                <input type="text" class="form-control" id="nome" name="nome" required="required" />
-            </div>
-            <div class="form-group">
-                <label>Sexo:</label>
-                <div class="form-check">
-                    <input type="radio" class="form-check-input" id="masculino" name="sexo" value="masculino" />
-                    <label class="form-check-label" for="masculino">Masculino</label>
-                </div>
-                <div class="form-check">
-                    <input type="radio" class="form-check-input" id="feminino" name="sexo" value="feminino" />
-                    <label class="form-check-label" for="feminino">Feminino</label>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="email">E-mail:</label>
-                <input type="email" class="form-control" id="email" name="email" required="required" />
-            </div>
-            <div class="form-group">
-                <label for="data_chegada">Data de Chegada:</label>
-                <input type="date" class="form-control" id="data_chegada" name="data_chegada" onchange="calcularTotalEstimado()" required="required" />
-            </div>
-            <div class="form-group">
-                <label for="num_noites">Número de Noites:</label>
-                <input type="number" class="form-control" id="num_noites" name="num_noites" min="1" onchange="calcularTotalEstimado()" required="required" />
-            </div>
-            <div class="form-group">
-                <label for="num_hospedes">Número de Hóspedes:</label>
-                <input type="number" class="form-control" id="num_hospedes" name="num_hospedes" min="1" onchange="calcularTotalEstimado()" required="required" />
-            </div>
-            <div class="form-group">
-                <label for="total_estimado">Total Estimado:</label>
-                <input type="text" class="form-control" id="total_estimado" name="total_estimado" readonly="readonly" />
-            </div>
-            <div class="form-group">
-                <label for="mensagem">Mensagem:</label>
-                <textarea class="form-control" id="mensagem" name="mensagem" rows="4"></textarea>
-            </div>
-            <div class="form-check">
-                <input type="checkbox" class="form-check-input" id="newsletter" name="newsletter" />
-                <label class="form-check-label" for="newsletter">Desejo receber a newsletter</label>
-            </div>
-            <button type="submit" class="btn btn-primary mt-3">Enviar</button>
-        </form>
-    </div>
-    <!-- JavaScript do Bootstrap e dependências -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <h2>Formulário de Reserva de Hotel</h2>
+    <form id="reservationForm" action="#" method="POST">
+        <label for="nome">Nome:</label>
+        <br />
+        <input type="text" id="nome" name="nome" required />
+        <br /><br />
+        <label>Sexo:</label>
+        <br />
+        <input type="radio" id="masculino" name="sexo" value="masculino" />
+        <label for="masculino">Masculino</label>
+        <input type="radio" id="feminino" name="sexo" value="feminino" />
+        <label for="feminino">Feminino</label>
+        <br /><br />
+        <label for="cpf">CPF:</label>
+        <br />
+        <input type="text" id="cpf" name="cpf" required />
+        <br /><br />
+        <label for="email">E-mail:</label>
+        <br />
+        <input type="email" id="email" name="email" required />
+        <br /><br />
+        <label for="data_chegada">Data de Chegada:</label>
+        <br />
+        <input type="text" id="data_chegada" name="data_chegada" required />
+        <br /><br />
+        <label for="num_noites">Número de Noites:</label>
+        <br />
+        <input type="number" id="num_noites" name="num_noites" min="1" required />
+        <br /><br />
+        <label for="num_hospedes">Número de Hóspedes:</label>
+        <br />
+        <input type="number" id="num_hospedes" name="num_hospedes" min="1" required />
+        <br /><br />
+        <label for="total_estimado">Total Estimado:</label>
+        <br />
+        <input type="text" id="total_estimado" name="total_estimado" readonly />
+        <br /><br />
+        <label for="mensagem">Mensagem:</label>
+        <br />
+        <textarea id="mensagem" name="mensagem" rows="4" cols="50"></textarea>
+        <br /><br />
+        <input type="checkbox" id="newsletter" name="newsletter" />
+        <label for="newsletter">Desejo receber a newsletter</label>
+        <br /><br />
+        <input type="submit" value="Enviar" />
+    </form>
+
+    <script src="script.js"></script>
 </body>
 </html>
+
