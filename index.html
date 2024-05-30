@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Formulário de Reserva de Hotel</title>
+    <link rel="stylesheet" href="style.css"/>
+    <script>
+        function calcularTotalEstimado() {
+            var dataChegada = new Date(document.getElementById("data_chegada").value);
+            var numNoites = parseInt(document.getElementById("num_noites").value);
+            var numHospedes = parseInt(document.getElementById("num_hospedes").value);
+            var precoPorNoite = 90;
+            var totalEstimado = precoPorNoite * numNoites * numHospedes;
+            document.getElementById("total_estimado").value = totalEstimado.toFixed(2);
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="logo/Hoteel.jpg" alt="Logomarca do Hotel" />
+        </div>
+        <nav class="menu">
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#servicos">Serviços</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+    <h2>Formulário de Reserva de Hotel</h2>
+    <form action="processar_reserva.php" method="POST">
+        <label for="nome">Nome:</label>
+        <br />
+        <input type="text" id="nome" name="nome" required="required" />
+        <br /><br />
+        <label>Sexo:</label>
+        <br />
+        <input type="radio" id="masculino" name="sexo" value="masculino" />
+        <label for="masculino">Masculino</label>
+        <input type="radio" id="feminino" name="sexo" value="feminino" />
+        <label for="feminino">Feminino</label>
+        <br /><br />
+        <label for="email">E-mail:</label>
+        <br />
+        <input type="email" id="email" name="email" required="required" />
+        <br /><br />
+        <label for="data_chegada">Data de Chegada:</label>
+        <br />
+        <input type="date" id="data_chegada" name="data_chegada" onchange="calcularTotalEstimado()" required="required" />
+        <br /><br />
+        <label for="num_noites">Número de Noites:</label>
+        <br />
+        <input type="number" id="num_noites" name="num_noites" min="1" onchange="calcularTotalEstimado()" required="required" />
+        <br /><br />
+        <label for="num_hospedes">Número de Hóspedes:</label>
+        <br />
+        <input type="number" id="num_hospedes" name="num_hospedes" min="1" onchange="calcularTotalEstimado()" required="required" />
+        <br /><br />
+        <label for="total_estimado">Total Estimado:</label>
+        <br />
+        <input type="text" id="total_estimado" name="total_estimado" readonly="readonly" />
+        <br /><br />
+        <label for="mensagem">Mensagem:</label>
+        <br />
+        <textarea id="mensagem" name="mensagem" rows="4" cols="50"></textarea>
+        <br /><br />
+        <input type="checkbox" id="newsletter" name="newsletter" />
+        <label for="newsletter">Desejo receber a newsletter</label>
+        <br /><br />
+        <input type="submit" value="Enviar" />
+    </form>
+</body>
+</html>
